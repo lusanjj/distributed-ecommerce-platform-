@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-platform
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ecommerce
+  template:
+    metadata:
+      labels:
+        app: ecommerce
+    spec:
+      containers:
+      - name: user-service
+        image: user-service-image
+        ports:
+        - containerPort: 8081
+      - name: product-service
+        image: product-service-image
+        ports:
+        - containerPort: 8082
